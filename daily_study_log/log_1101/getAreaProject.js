@@ -12,10 +12,13 @@ function getArea(){
     const shape = inputArguments[0];
     const values = inputArguments.slice(1);
 
-    console.log('getArea(' + shape + ') 계산 결과 : ' +  calculator(shape, values));
-    pushExecutionSequence(shape);
+    result = calculator(shape, values);
+    console.log('getArea(' + shape + ') 계산 결과 : ' +  result);
+
+    pushExecutionSequence(shape, values, result);
 }
 
+/* 입력값의 유효성 체크 */
 // 유효한 매개변수인지 체크
 function isValidArguments(arg){
     if(arg.length < 2){
@@ -93,6 +96,7 @@ function isValidRadiusOfCircle(radiusArray){
     return true;
 }
 
+/* 크기 계산 */
 function calculator(shape, values){
     var getResult = {
         circle : function(){ return getCircleArea(values) },
@@ -133,8 +137,8 @@ function getTrapezoidArea(top, bottom, height){
 }
 
 /* 실행 순서 */
-function pushExecutionSequence(shape){
-    execSequence.push(shape);
+function pushExecutionSequence(shape, values, result){
+    execSequence.push(shape + '(' + values + ') : ' + result);
 }
 
 function printExecutionSequence(){
