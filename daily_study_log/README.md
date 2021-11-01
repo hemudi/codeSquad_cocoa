@@ -1,4 +1,4 @@
-# __Daily Study Log__
+# 📰 __Daily Study Log__
 > __일일 학습 일지 저장소__
 ---
 ## 🤔 __Day Log REDEME?__
