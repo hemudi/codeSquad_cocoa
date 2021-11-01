@@ -1,2 +1,9 @@
-# Daily Study Log
-일일 학습 일지
+# __Daily Study Log__
+> __일일 학습 일지 저장소__
+---
+## 🤔 __Day Log REDEME?__
+#### 🖋 __Mission__ : 그 날의 미션 주제
+#### 📌 __CheckPoint__ : 학습 체크포인트
+#### 🔖 __Search Keyword__ : 미션 수행하며 검색한, 해야할 키워드
+#### 🗂 __Record Link__ : 그 날의 검색 키워드, 학습 내용 등을 정리한 notion, 블로그 주소 정리
+#### [README(empty form).md](README(empty%20form).md)
