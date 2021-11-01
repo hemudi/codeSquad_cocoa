@@ -1,4 +1,4 @@
-# __Day Log #1101__
+# __🎥 Day Log #1101__
 
 ## 🖋 __Mission__
 > 다각형의 넓이 구하기
@@ -6,6 +6,7 @@
 - [X] printExecutionSequence 구현
 - [X] printExecutionSequence with result 구현
 - [소스 코드](getAreaProject.js)
+- 
 ---
 ## 📌 __CheckPoint__
 - [X] Node.js를 통해 JavaScript 개발을 할 수 있다.
@@ -27,4 +28,4 @@
 - [ ] Debugging : [Debugging 기술문서 정리.md](Debugging%20기술문서%20정리.md)
 ---
 ## 🗂 __Record Link__
-- [Notion]()
+- [Notion : Codesquad #1101](https://sprout-capybara-6f1.notion.site/Codesquad-1101-8c31beb938e44bd1bb7c35292d15bdef)
