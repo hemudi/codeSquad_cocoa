@@ -6,8 +6,6 @@ function getArea(){
         return;
     }
 
-    // console.log('※ 매개변수 유효성 테스트 성공');
-
     console.log('getArea(' + arguments[0] + ') 계산 결과 : ' +  calculator(inputArguments[0], inputArguments.slice(1)));
 }
 
@@ -21,9 +19,6 @@ function isValidArguments(arg){
     const shape = arg[0];
     const argCount = arg.length - 1;
     const sizeArray = arg.slice(1);
-
-    // console.log('shape : ' + shape);
-    // console.log('argCount : ' + argCount);
 
     if(isValidShape(shape, argCount) == false){
         // 유효한 도형과 입력 값이 아님
@@ -51,7 +46,6 @@ const shapeArgCount = {
 function isValidShape(shape, argCount){
 
     if(shapeArgCount[shape] == undefined){
-        // console.log('undefined');
         return false;
     }
 
@@ -60,14 +54,7 @@ function isValidShape(shape, argCount){
 
 // 유효한 사이즈인지
 function isValidSize(shape, sizeArray){
-
-    // console.log('isValidSize() shape : ' + shape);
-    // console.log('sizeArray : ' + sizeArray);
-
     for(let value of sizeArray){
-
-        // console.log('for value : ' + value);
-
         if(isNaN(value)){
             console.log('isNaN');
             return false;
@@ -80,7 +67,6 @@ function isValidSize(shape, sizeArray){
     }
 
     if(shape == 'circle'){
-        // console.log('check circle');
         return isValidRadiusOfCircle(sizeArray)
     }
 
@@ -94,7 +80,6 @@ function isValidRadiusOfCircle(radiusArray){
     }
 
     if(radiusArray[0] > radiusArray[1]) {
-        // console.log('max 문제있음');
         return false;
     }
 
@@ -102,45 +87,25 @@ function isValidRadiusOfCircle(radiusArray){
 }
 
 function calculator(shape, values){
-
-    // console.log('calculator shape : ' + shape);
-    // console.log('calculator values : ' + values);
-
     var getResult = {
         circle : function(){ return getCircleArea(values) },
         rect : function(){ return getRectArea(values[0], values[1])},
         trapezoid : function(){ return getTrapezoidArea(values[0], values[1], values[2])}
     };
 
-   // const result = getResult[shape]();
-
-    //console.log('getResult.shape : ' + result);
-
     return getResult[shape]();    
-//    return getResult[shape];
 }
 
 function getCircleArea(radiusInfo){
-
-    // console.log('getCircleArea');
-    // console.log('array length : ' + radiusInfo.length);
-
     var result = 0;
     var radius = radiusInfo[0];
     var maxRadius = getMaxRadius(radiusInfo);
 
-    // console.log('maxRadius : ' + maxRadius);
-
     do{
-        // console.log('radius : ' + radius);
         result += calcCircleArea(radius);
-        // console.log('result : ' + result);
     } while(radius++ < maxRadius);
 
-    // console.log('maxRadius : ' + maxRadius);
-
     return result;
-
 }
 
 function getMaxRadius(radiusArray){
@@ -149,21 +114,18 @@ function getMaxRadius(radiusArray){
 }
 
 function calcCircleArea(radius){
-    // console.log('radius : ' + radius + " / result : " + radius*radius*Math.PI);
     return radius*radius*Math.PI;
 }
 
-
 function getRectArea(width, height){
-    // console.log('getRectArea width : ' + width + ' height : ' + height);
     return width*height;
 }
 
 function getTrapezoidArea(top, bottom, height){
-    // console.log('getTrapezoidArea');
     return (top+bottom) * height / 2;
 }
 
+/* 테스트 */
 getArea('circle', 10);
 getArea('rect', 10, 15);
 getArea('trapezoid', 10, 15, 12);
