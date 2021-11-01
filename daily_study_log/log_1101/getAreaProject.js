@@ -5,7 +5,7 @@ function getArea(){
     const inputArguments = Array.from(arguments);
 
     if(isValidArguments(inputArguments) == false){
-        console.log('※ 주의 : 매개변수를 확인해주세요!');
+        console.log('※ 주의 : 입력값을 확인해주세요!');
         return;
     }
 
@@ -22,7 +22,7 @@ function getArea(){
 // 유효한 매개변수인지 체크
 function isValidArguments(arg){
     if(arg.length < 2){
-        console.log('기본 매개변수 입력 제대로 안됨');
+        // 기본 매개변수 입력 제대로 안됨
         return false;
     }
 
@@ -32,14 +32,12 @@ function isValidArguments(arg){
 
     if(isValidShape(shape, argCount) == false){
         // 유효한 도형과 입력 값이 아님
-        console.log('유효한 도형과 입력 값이 아님');
         return false;
     }
 
     if(isValidSize(shape, sizeArray) == false){
         // 유효한 도형의 크기가 아님
         // 음수거나 숫자가 아니거나
-        console.log('유효한 도형의 크기가 아님');
         return false;
     }
 
@@ -66,12 +64,10 @@ function isValidShape(shape, argCount){
 function isValidSize(shape, sizeArray){
     for(let value of sizeArray){
         if(isNaN(value)){
-            console.log('isNaN');
             return false;
         }
 
         if(value < 0){
-            console.log('value < 0');
             return false;
         }
     }
@@ -157,3 +153,13 @@ getArea('rect', 10, 15);
 getArea('trapezoid', 10, 15, 12);
 getArea('circle', 1, 3);
 printExecutionSequence();
+
+/* 입력값 테스트 */
+getArea('circle');
+getArea('circle', 3, 3, 2);
+getArea('circle', 'circle');
+getArea('triangle', 3, 1);
+getArea('rect', 10);
+getArea('rect', -1, 19);
+getArea('trapezoid', 10, 10, 10, 10);
+getArea(3, 3);
