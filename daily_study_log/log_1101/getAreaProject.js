@@ -1,3 +1,6 @@
+let execSequence = [];
+
+/* 넓이 구하기 */
 function getArea(){
     const inputArguments = Array.from(arguments);
 
@@ -6,7 +9,11 @@ function getArea(){
         return;
     }
 
-    console.log('getArea(' + arguments[0] + ') 계산 결과 : ' +  calculator(inputArguments[0], inputArguments.slice(1)));
+    const shape = inputArguments[0];
+    const values = inputArguments.slice(1);
+
+    console.log('getArea(' + shape + ') 계산 결과 : ' +  calculator(shape, values));
+    pushExecutionSequence(shape);
 }
 
 // 유효한 매개변수인지 체크
@@ -125,8 +132,24 @@ function getTrapezoidArea(top, bottom, height){
     return (top+bottom) * height / 2;
 }
 
+/* 실행 순서 */
+function pushExecutionSequence(shape){
+    execSequence.push(shape);
+}
+
+function printExecutionSequence(){
+    const sequenceString = execSequence.join(' > ');
+
+    if(sequenceString == ''){
+        console.log('※ 실행된 함수가 없습니다!');
+    }
+
+    console.log(sequenceString);
+}
+
 /* 테스트 */
 getArea('circle', 10);
 getArea('rect', 10, 15);
 getArea('trapezoid', 10, 15, 12);
 getArea('circle', 1, 3);
+printExecutionSequence();
