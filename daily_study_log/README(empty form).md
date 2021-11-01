@@ -1,14 +1,14 @@
-# Day Log #0000
+# __Day Log #0000__
 
-## 🖋 Mission
-> 주제
+## 🖋 __Mission__
+> __주제__
 - [X] empty
 ---
-## 📌 CheckPoint
+## 📌 __CheckPoint__
 - [X] empty
 ---
-## 🔖 Search Keyword
+## 🔖 __Search Keyword__
 - [ ] empty
 ---
-## 🗂 Record Link
+## 🗂 __Record Link__
 - [Notion]()
