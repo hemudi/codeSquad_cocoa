@@ -6,7 +6,7 @@
 - [X] printExecutionSequence 구현
 - [X] printExecutionSequence with result 구현
 - [소스 코드](getAreaProject.js)
-- 
+  
 ---
 ## 📌 __CheckPoint__
 - [X] Node.js를 통해 JavaScript 개발을 할 수 있다.
