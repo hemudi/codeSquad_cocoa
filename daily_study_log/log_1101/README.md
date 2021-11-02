@@ -29,3 +29,4 @@
 ---
 ## 🗂 __Record Link__
 - [Notion : Codesquad #1101](https://sprout-capybara-6f1.notion.site/Codesquad-1101-8c31beb938e44bd1bb7c35292d15bdef)
+- [Notion : [MISSION] 다각형의 넓이 구하기](https://sprout-capybara-6f1.notion.site/MISSION-36871a3503704621b4ae973fb6ef2bb5)
