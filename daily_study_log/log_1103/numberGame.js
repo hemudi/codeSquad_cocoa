@@ -15,19 +15,23 @@
     [4-2] result.split(""); 출력
           => 출력 형태 ['0', '1', '1', ... , '1']
 
+    // 말한 숫자 구분되게 출력
+    [3-2] for index = 0 to maxCount
+            result(배열) <= push "index.toString(진법)"
+    [4-2] result 출력
+           => 출력 형태 ['0', '1', '10', '11', '100', '101', '110', '111']
+
 */
 
 function solution(baseNum, numCount, numPlayer){
     let maxCount = numCount * numPlayer;
-    let result = '';
+    let resultArr = [];
 
     for(index = 0; index < maxCount; index++){
-        result += index.toString(baseNum);
+        resultArr.push(index.toString(baseNum));
     }
 
-    let resultArr2 = result.split("");
-
-    console.log(resultArr2);
+    console.log(resultArr);
 }
 
 solution(2, 4, 2);
