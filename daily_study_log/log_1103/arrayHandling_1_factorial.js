@@ -44,10 +44,9 @@ function calculate_sol1(maxValue){
 
 function calculate_sol2(maxValue){
     let resultArray = [];
-    let result = factorial(maxValue);
+    let result = factorial(resultArray, maxValue);
 
-    console.log("result : " + result);
-    console.log("resultArray : " + resultArray);
+    return resultArray;
 }
 
 function factorial(resultArray, currentNum){
@@ -65,5 +64,5 @@ function factorial(resultArray, currentNum){
 
 // console.log(calculate_sol1(5));
 // console.log(calculate_sol1(10));
-console.log(calculate_sol2(2));
+console.log(calculate_sol2(5));
 
