@@ -28,7 +28,7 @@
 
 */
 
-function calculate(maxValue){
+function calculate_sol1(maxValue){
     let resultArray = [];
     let currentNum = 1;
     let currentValue = 1;
@@ -42,7 +42,28 @@ function calculate(maxValue){
     return resultArray;
 }
 
+function calculate_sol2(maxValue){
+    let resultArray = [];
+    let result = factorial(maxValue);
 
-console.log(calculate(5));
-console.log(calculate(10));
+    console.log("result : " + result);
+    console.log("resultArray : " + resultArray);
+}
+
+function factorial(resultArray, currentNum){
+    if(currentNum === 1){
+        resultArray.push(1);
+        return 1;
+    }
+
+    let currentValue = currentNum * factorial(resultArray, currentNum - 1);
+    resultArray.push(currentValue);
+    
+    return currentValue;
+}
+
+
+// console.log(calculate_sol1(5));
+// console.log(calculate_sol1(10));
+console.log(calculate_sol2(2));
 
