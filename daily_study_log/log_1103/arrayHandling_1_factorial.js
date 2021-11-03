@@ -3,30 +3,46 @@
     [문제 1] 임의의 숫자 m 을 입력받아 1부터 m까지의 factorial 값을 배열로 담아 반환하는 함수
 
     [방법 1]
-    [*] calculate(m)
-    [1] 결과 = [1] 변수 선언
-    [2] 현재 숫자 = 2 변수 선언
-    [3] 현재 결과 = 0 변수 선언
+    [*] calculate_sol1(m)
+    [1] 결과 = [] 변수 선언
+    [2] 현재 숫자 = 1 변수 선언
+    [3] 현재 결과 = 1 변수 선언
     [4] while( 현재 숫자 <= m )
-            현재 결과 = 결과[현재 숫자 - 1] * 현재 숫자
+            현재 결과 *= 현재 숫자
             결과.push(현재 결과)
             현재 숫자++
     [5] 결과 반환
 
+    [방법 2]
+    [*] calculate_sol2(결과, m)
+    [1] 결과 = []
+    [2] factorial(결과, m)
+        [2 - 1] if(m === 1)
+                    결과.push(1)
+                    return 1
+        [2 - 2] 현재 값 = m * factorial(결과, m - 1) 
+        [2 - 3] 결과.push(현재 값)
+        [2 - 4] 현재 값 반환
+
+    [3] 결과 반환
+
 */
 
 function calculate(maxValue){
-    let resultArray = [1];
-    let currentNum = 2;
-    let currentValue = 0;
+    let resultArray = [];
+    let currentNum = 1;
+    let currentValue = 1;
 
     while(currentNum <= maxValue){
-        currentValue = resultArray[currentNum - 1] * currentNum;
+        currentValue *= currentNum;
         resultArray.push(currentValue);
-        currentValue++;
+        currentNum++;
     }
 
     return resultArray;
 }
 
-console.log(calculate(3));
+
+console.log(calculate(5));
+console.log(calculate(10));
+
