@@ -91,7 +91,7 @@ function getPlayerAnswerAtThatTime(fullAnswer, numPlayer, playerOrder, times){
 }
 
 // 위의 함수 결과 출력용
-function printPlayerAnswerAtThatTimer(baseNum, numCount, numPlayer, playerOrder, times){
+function printPlayerAnswerAtThatTime(baseNum, numCount, numPlayer, playerOrder, times){
     let logStr = `> 이번 ${baseNum}진수 게임의 ${numPlayer}명의 플레이어 중 ${playerOrder}번째 순서의 플레이어가 ${times}번째에 말한 답은 `;
     let fullAnswer = getFullAnswer(baseNum, numCount);
 
@@ -106,7 +106,7 @@ function printPlayerAnswerAtThatTimer(baseNum, numCount, numPlayer, playerOrder,
 // solution(2, 4, 3, 2);
 
 solution(2, 10, 6, 5);
-printPlayerAnswerAtThatTimer(2, 10, 6, 5, 3);
+printPlayerAnswerAtThatTime(2, 10, 6, 5, 3);
 
 solution(16, 18, 2, 2);
-printPlayerAnswerAtThatTimer(16, 18, 2, 2, 4);
+printPlayerAnswerAtThatTime(16, 18, 2, 2, 4);
