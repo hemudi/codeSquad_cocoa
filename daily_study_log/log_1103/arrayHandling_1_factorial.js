@@ -61,8 +61,13 @@ function factorial(resultArray, currentNum){
     return currentValue;
 }
 
+/* 방법 1 테스트 */
+console.log(calculate_sol1(4));
+console.log(calculate_sol1(5));
+console.log(calculate_sol1(10));
 
-// console.log(calculate_sol1(5));
-// console.log(calculate_sol1(10));
+/* 방법 2 테스트 */
+console.log(calculate_sol2(4));
 console.log(calculate_sol2(5));
+console.log(calculate_sol2(10));
 
