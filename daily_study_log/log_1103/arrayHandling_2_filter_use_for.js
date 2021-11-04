@@ -39,8 +39,7 @@ function filterId(idArray){
 
     for(let value of idArray){
         if(checkSpecialChar(value)) continue;
-
-        filteredArray.push(removeNumInId(value));
+        filteredArray.push(removeNum(value));
     }
 
     return filteredArray;
@@ -48,20 +47,27 @@ function filterId(idArray){
 
 function checkSpecialChar(id){
     const specialCharPattern = /[!?@#$%^&*():;+=~{}<>\_\[\]\|\\\"\'\,\.\/\`\₩]/gi;
-
     return specialCharPattern.test(id);
 }
 
-function removeNumInId(id){
-    let removedId = '';
-
-    for(let value of id){
-        if(isNaN(value)){
-            removedId += value;
-        }
-    }
-
-    return removedId;
+function removeNum(id){
+    const numberPattern = /[0-9]/;
+    return id.replace(numberPattern, '');
 }
 
 console.log(filterId(peoples));
+
+
+/* replace() 알기 전 구현한 removeNumInId */
+
+// function removeNumInId(id){
+//         let removedId = '';
+    
+//         for(let value of id){
+//             if(isNaN(value)){
+//                 removedId += value;
+//             }
+//         }
+    
+//         return removedId;
+//     }
