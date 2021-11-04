@@ -32,36 +32,18 @@ const data = {
 }
 
 function travelObject(object){
-    for(let id in object){
-        let value = object[id];
-
-        if(value.onClick){
-            console.log('onClick : ' + value);
-        }
-        else console.log(value);
-    }
-}
-
-function travelObject(object){
     let keysOfNumValue = [];
 
     for(let key in object){
         let value = object[key];
 
         if(typeof(value) === 'number'){
-            console.log('num : ' + value);
             keysOfNumValue.push(key);
         }
         else if(typeof(value) == 'object'){
-            console.log('object: ' + key);
             keysOfNumValue.push(travelObject(value));
         }
-        else {
-            console.log('nothing : ' + value);
-        }
-
     }
-
     return keysOfNumValue;
 }
 
