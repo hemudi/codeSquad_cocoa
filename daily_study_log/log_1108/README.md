@@ -27,4 +27,4 @@
 - [ ] Prototype
 ---
 ## 🗂 __Record Link__
-- [Notion]()
+- [Notion : [MISSION] HashMap 만들기](https://sprout-capybara-6f1.notion.site/MISSION-HashMap-8df28e3becdf4a2aa37581e8a75ac34a)
