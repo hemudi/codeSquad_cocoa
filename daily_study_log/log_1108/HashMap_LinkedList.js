@@ -99,7 +99,7 @@ function HashMap(size) {
         return matchNode != null ? matchNode.value = value : false;
     }
 
-    /* --- [8] replace --- */
+    /* --- [8] size --- */
     HashMap.prototype.size = function () {
         let count = 0;
 
