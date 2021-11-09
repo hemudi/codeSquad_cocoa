@@ -44,7 +44,6 @@ function HashMap(size) {
         for(let index = 0; index < bucket.length; index++){
             if(bucket[index].key === key){
                 bucket.splice(index, 1);
-                this.hashTable[address] = bucket;
                 return;
             }
         }
