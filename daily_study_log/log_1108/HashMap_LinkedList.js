@@ -39,7 +39,7 @@
 
      8. size() : 전체 아이템 개수를 리턴
          - 전체 순회 후 개수 return
-         
+
      9. clear() : 전체 맵을 초기화
          - new 를 사용해 배열 새로 생성
  */
@@ -52,8 +52,8 @@ const Node = function (key, value, address, next = null) {
 }
 
 function HashMap(size) {
-    this.mapSize = size;
-    this.hashTable = new Array(this.mapSize); // 명시적으로 생성하는 편이 나을까
+    this.tableSize = size;
+    this.hashTable = new Array(this.tableSize); // 명시적으로 생성하는 편이 나을까
     
     /* --- [0] Hash Function --- */
     HashMap.prototype.getHashAddress = function (key) {
@@ -63,7 +63,7 @@ function HashMap(size) {
             asciiSum += key.charCodeAt(index);
         }
 
-        return asciiSum % this.mapSize;
+        return asciiSum % this.tableSize; // 디버깅에 용이하지 않음 -> const value = hash % this.size  로 변수 선언해서 반환
     }
 
     /* --- [1] put --- */
@@ -159,7 +159,7 @@ function HashMap(size) {
 
     /* --- [9] clear --- */
     HashMap.prototype.clear = function () {
-        this.hashTable = new Array(this.mapSize);
+        this.hashTable = new Array(this.tableSize);
     }
 
     /* --- [*] HashMap 출력용 --- */
