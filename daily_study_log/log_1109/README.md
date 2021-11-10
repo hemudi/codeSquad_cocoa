@@ -1,18 +1,9 @@
-# __🎥 Day Log #1108__
+# __🎥 Day Log #1109__
 
 ## 🖋 __Mission__
 > __해시맵 구현 : Array__
-- [X] Linked List 로 구현한 해시맵의 충돌처리를 Array 로 변환
-- [X] put(String key, String value)
-- [X] remove(String key)
-- [X] containsKey(String)
-- [X] get(String) 
-- [X] isEmpty()
-- [X] keys()
-- [X] replace(String key, String value)
-- [X] size()
-- [X] clear()
-- [X] 객체 형태(prototype) 속성 활용
+- [X] __Linked List 로 구현한 해시맵의 충돌처리를 Array 로 변환__
+- [X] 중간 데이터 삭제 시 splice() 이용
 ---
 ## 📌 __CheckPoint__
 - [X] Hash 자료구조
