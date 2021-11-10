@@ -13,7 +13,17 @@
     [괄호 매칭 검사]
     - 스택에 여는 괄호를 하나씩 넣음
     - 닫는 괄호가 나오면 스택에서 하나씩 꺼내서 비교
+    =>  반복문으로 하나 만들고 재귀로 하나 더 만들어보자
 
+    [run(data)]
+    - 입력받은 문자열을 문자 배열에 입력 => split()
+    - 괄호 담을 스택 생성
+    - 문자 배열의 문자들을 정규식을 이용해 괄호인지 아닌지 판별 
+    - 중첩 깊이 수준은 닫는 괄호를 만날때까지 스택에 쌓인 괄호의 개수
+    - 원소의 개수는 입력된 문자열 길이 - 중첩된 깊이 * 2 
+    
+    [배열 분석 정보]
+    - type, child, value 속성을 가지는 객체 생성해서 정보 담기?
  */
 
 class Stack {
@@ -48,22 +58,67 @@ class Stack {
     }
 }
 
-const stack = new Stack();
-
-console.log(stack.isEmpty());
-console.log(stack.push('one'));
-console.log(stack.push('two'));
-console.log(stack.getSize());
-console.log(stack.getStack());
-console.log(stack.peek());
-console.log(stack.getSize());
-console.log(stack.pop());
-console.log(stack.getSize());
-console.log(stack.isEmpty());
-console.log(stack.pop());
-console.log(stack.isEmpty());
-console.log(stack.pop());
-
 function run(data){
+    const dataArray = data.split('');
+    const filteredArray = dataArray.filter((element) => element !== ',');
+    const bracketStack = new Stack();
+    let depth = 0;
 
+    for(const char of dataArray){
+
+        if(isLeftBracket(char)) {
+            bracketStack.push(char);
+            depth++;
+            continue;
+        }
+
+        if(!isRightBracket(char)){
+            continue;
+        }
+
+        if(!isPair(bracketStack.pop(), char)){
+            console.log('닫는 괄호가 일치하지 않습니다!');
+            return false;
+        }
+    }
+
+    if(!bracketStack.isEmpty()){
+        console.log('닫는 괄호가 일치하지 않습니다.');
+        return false;
+    }
+
+    let valueCount = filteredArray.length - (depth*2);
+
+    console.log('배열의 중첩된 깊이 수준은 ' + depth + '이며, 총 ' + valueCount + '개의 원소가 포함되어 있습니다.');
+    return true;    
 }
+
+function isLeftBracket(char){
+    let regExp = /[\[\(\{})]/g;
+    let isBracket = regExp.test(char);
+    return isBracket;
+}
+
+function isRightBracket(char){
+    let regExp = /[\)\}\]]/g;
+    let isBracket = regExp.test(char);
+    return isBracket;
+}
+
+function isPair(left, right){
+    const brackets = {
+        '(' : ')',
+        '{' : '}',
+        '[' : ']'
+    }
+
+    let result = brackets[left] === right;
+
+    return result;
+}
+
+function isComma(char){
+    return char === ',';
+}
+
+run('[1,2,[3,4,[5,[6]]]]');
