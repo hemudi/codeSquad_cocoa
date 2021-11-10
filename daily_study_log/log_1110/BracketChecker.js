@@ -46,7 +46,7 @@ class Stack {
     }
 
     isEmpty(){
-        return !this.stack.length; // 반환값이 뭔지 테스트해보자
+        return !this.stack.length;
     }
 
     getSize(){
@@ -59,9 +59,10 @@ class Stack {
 }
 
 function run(data){
-    const dataArray = data.split('');
-    const filteredArray = dataArray.filter((element) => element !== ','); // 굳이...
+    const dataArray = data.split(''); // data 원본 유지 필요 없으면 data = data.split('');
     const bracketStack = new Stack();
+    const valueStack = new Stack();
+    let valueTemp = '';
     let depth = 0;
 
     for(const char of dataArray){
@@ -72,14 +73,27 @@ function run(data){
             continue;
         }
 
-        if(!isRightBracket(char)){
+        if(isRightBracket(char)){
+            if(valueTemp.length !== 0){
+                valueStack.push(valueTemp);
+                valueTemp = '';
+            }
+
+            if(!isPair(bracketStack.pop(), char)){
+                console.log('닫는 괄호가 일치하지 않습니다!');
+                return false;
+            }
+
             continue;
         }
 
-        if(!isPair(bracketStack.pop(), char)){
-            console.log('닫는 괄호가 일치하지 않습니다!');
-            return false;
+        if(!isComma(char)){
+            valueTemp += char;
+            continue;
         }
+
+        valueStack.push(valueTemp);
+        valueTemp = '';
     }
 
     if(!bracketStack.isEmpty()){
@@ -87,9 +101,7 @@ function run(data){
         return false;
     }
 
-    let valueCount = filteredArray.length - (depth*2);
-
-    console.log('배열의 중첩된 깊이 수준은 ' + depth + '이며, 총 ' + valueCount + '개의 원소가 포함되어 있습니다.');
+    console.log('배열의 중첩된 깊이 수준은 ' + depth + '이며, 총 ' + valueStack.getSize() + '개의 원소가 포함되어 있습니다.');
     return true;    
 }
 
