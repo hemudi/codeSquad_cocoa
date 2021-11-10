@@ -61,7 +61,7 @@ class Stack {
 function run(data){
     const dataArray = data.split(''); // data 원본 유지 필요 없으면 data = data.split('');
     const bracketStack = new Stack();
-    const valueStack = new Stack();
+    const values = [];
     let valueTemp = '';
     let depth = 0;
 
@@ -75,7 +75,7 @@ function run(data){
 
         if(isRightBracket(char)){
             if(valueTemp.length !== 0){
-                valueStack.push(valueTemp);
+                values.push(valueTemp);
                 valueTemp = '';
             }
 
@@ -92,7 +92,7 @@ function run(data){
             continue;
         }
 
-        valueStack.push(valueTemp);
+        values.push(valueTemp);
         valueTemp = '';
     }
 
@@ -101,7 +101,7 @@ function run(data){
         return false;
     }
 
-    console.log('배열의 중첩된 깊이 수준은 ' + depth + '이며, 총 ' + valueStack.getSize() + '개의 원소가 포함되어 있습니다.');
+    console.log('배열의 중첩된 깊이 수준은 ' + depth + '이며, 총 ' + values.length + '개의 원소가 포함되어 있습니다.');
     return true;    
 }
 
