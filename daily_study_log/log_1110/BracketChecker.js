@@ -60,7 +60,7 @@ class Stack {
 
 function run(data){
     const dataArray = data.split('');
-    const filteredArray = dataArray.filter((element) => element !== ',');
+    const filteredArray = dataArray.filter((element) => element !== ','); // 굳이...
     const bracketStack = new Stack();
     let depth = 0;
 
@@ -121,4 +121,5 @@ function isComma(char){
     return char === ',';
 }
 
-run('[1,2,[3,4,[5,[6]]]]');
+run('[1,2,[3,4,[5,[6]]]]');  // => true
+run('[1,2,[3,4,[5,[6]]]]');  // => false
