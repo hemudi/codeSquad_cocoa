@@ -1,4 +1,4 @@
-// 리팩토링 필요...
+// 리팩토링 필요...함수 쪼개야함
 // 배열 데이터 저장하는걸 따로 뺄까?... => 재귀로 구현?
 
 /*
@@ -23,6 +23,8 @@
     4. 그 외의 경우(value 조각)
         - valueTemp += 
 
+    5. 반복문 끝나고 스택에 남아있는게 있는지 체크
+        - 남아있으면 짝 안맞음 => false
  */
 
 class Stack {
@@ -76,7 +78,6 @@ function run(data){
             bracketStack.push(char);
             depth++;
 
-            // 이 부분 더 단순하게 안되나 따로 빼야하나
             childArrayObject = getChildObject('array');
             currentObject['child'].push(childArrayObject);
             currentObject = childArrayObject;
@@ -120,7 +121,7 @@ function run(data){
 }
 
 function isLeftBracket(char){
-    let regExp = /[\[\(\{})]/g;
+    let regExp = /[\[\(\{]/g;
     let isBracket = regExp.test(char);
     return isBracket;
 }
@@ -160,7 +161,41 @@ function getChildObject(type, value = 0){
     return childObject;
 }
 
-run('[1,2,[3,4,[5,[6]]]]');                              // true : 배열의 중첩된 깊이 수준은 4이며, 총 6개의 원소가 포함되어 있습니다.
+run('[1,2,[3,4,[5,[6]]]]');                              
+/*
+    # 출력 결과
+    배열의 중첩된 깊이 수준은 4이며, 총 6개의 원소가 포함되어 있습니다.
+{
+  type: 'root',
+  child: [
+    {
+      type: 'array',
+      child: [
+        { type: 'value', value: '1', child: [] },
+        { type: 'value', value: '2', child: [] },
+        {
+          type: 'array',
+          child: [
+            { type: 'value', value: '3', child: [] },
+            { type: 'value', value: '4', child: [] },
+            {
+              type: 'array',
+              child: [
+                { type: 'value', value: '5', child: [] },
+                {
+                  type: 'array',
+                  child: [ { type: 'value', value: '6', child: [] } ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+*/
+
 run('[1,32,[3,4,46,[5,6,14,[646,[]]]]]');                // true : 배열의 중첩된 깊이 수준은 5이며, 총 9개의 원소가 포함되어 있습니다.
 run('[1,32,[3,4,46,[5,6,14,[646,[[[[[[[o,t]]]]]]]]]]]'); // true : 배열의 중첩된 깊이 수준은 11이며, 총 11개의 원소가 포함되어 있습니다.
 
