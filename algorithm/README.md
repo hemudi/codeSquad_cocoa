@@ -15,9 +15,9 @@
 |문제|풀이|해결|
 |:---:|:---:|:---:|
 |[나누어 떨어지는 숫자 배열](https://programmers.co.kr/learn/courses/30/lessons/12910)|[코드](week_2/programmers_12910.js)|✅|
-|[크레인 인형뽑기 게임](https://programmers.co.kr/learn/courses/30/lessons/64061)|[코드](week_2/programmers_64061.js)||
+|[크레인 인형뽑기 게임](https://programmers.co.kr/learn/courses/30/lessons/64061)|[코드](week_2/programmers_64061.js)|✅|
 |[두 개 뽑아서 더하기](https://programmers.co.kr/learn/courses/30/lessons/68644)|[코드](week_2/programmers_68644.js)|✅|
-|[모의고사](https://programmers.co.kr/learn/courses/30/lessons/42840)|[코드](week_2/programmers_42840.js)||
+|[모의고사](https://programmers.co.kr/learn/courses/30/lessons/42840)|[코드](week_2/programmers_42840.js)|✅|
 |[2016년](https://programmers.co.kr/learn/courses/30/lessons/12901)|[코드](week_2/programmers_12901.js)|✅|
 |[약수의 합](https://programmers.co.kr/learn/courses/30/lessons/12928)|[코드](week_2/programmers_12928.js)|✅|
 

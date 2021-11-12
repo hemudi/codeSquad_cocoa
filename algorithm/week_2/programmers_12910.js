@@ -30,6 +30,6 @@ const testDivisor = {
     3 : 10
 } 
 
-console.log(solution(testArray[1], testDivisor[1]));
-console.log(solution(testArray[2], testDivisor[2]));
-console.log(solution(testArray[3], testDivisor[3]));
+for(let index = 1; index < 4; index++){
+    console.log(solution(testArray[index], testDivisor[index]));
+}
