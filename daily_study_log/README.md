@@ -9,5 +9,5 @@
 #### 📋 빈 양식 : [README(empty form).md](README(empty%20form).md)
 ---
 ## 📝 List
-- #### 1주차 : [1101★](log_1101/README.md) [1102](log_1102/README.md) [1103★](log_1103/README.md)
-- #### 2주차 : [1108★](log_1108/README.md) [1109](log_1109/README.md)
+- #### 1주차 : [1101](log_1101/README.md) [1103](log_1103/README.md)
+- #### 2주차 : [1108](log_1108/README.md) [1110](log_1110/README.md)
