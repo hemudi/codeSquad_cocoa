@@ -73,18 +73,23 @@ function run(data){
     let currentObject = dataObject;
     let childArrayObject;
 
+    // 입력된 배열 순회
     for(const char of dataArray){
-        if(isLeftBracket(char)) {
-            bracketStack.push(char);
-            depth++;
 
-            childArrayObject = getChildObject('array');
-            currentObject['child'].push(childArrayObject);
-            currentObject = childArrayObject;
+        // 왼쪽 괄호인 경우
+        if(isLeftBracket(char)) {
+            bracketStack.push(char);    // 괄호 스택에 push
+            depth++;                    // 중첩 카운트 + 1
+
+            // 배열 자식 객체 생성
+            childArrayObject = getChildObject('array');       // type 이 array 인 배열 선언
+            currentObject['child'].push(childArrayObject);    // 현재 가리키는 객체의 child 배열에 push
+            currentObject = childArrayObject;                 // 현재 가리키는 객체 변경
 
             continue;
         }
 
+        // 오른쪽 괄호인 경우
         if(isRightBracket(char)){
             if(valueTemp.length !== 0){
                 currentObject['child'].push(getChildObject('value', valueTemp));
@@ -100,11 +105,13 @@ function run(data){
             continue;
         }
 
+        // comma 가 아닌 경우 => 값의 조각 valueTemp 문자열에 붙이기
         if(!isComma(char)){
             valueTemp += char;
             continue;
         }
 
+        // comma 인 경우 => 현재 객체의 child 배열에 value 타입의 객체를 만들어 모아놓은 문자열 valueTemp 를 넣어 추가
         currentObject['child'].push(getChildObject('value', valueTemp));
         valueCount++;
         valueTemp = '';
@@ -161,7 +168,8 @@ function getChildObject(type, value = 0){
     return childObject;
 }
 
-run('[1,2,[3,4,[5,[6]]]]');                              
+run('[1,2,[3,4,[5,[6]]]]');       
+run('[1,2,[3,4],[5,6][7]]');                       
 /*
     # 출력 결과
     배열의 중첩된 깊이 수준은 4이며, 총 6개의 원소가 포함되어 있습니다.
