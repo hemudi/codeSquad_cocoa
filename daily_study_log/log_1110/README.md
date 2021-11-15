@@ -1,11 +1,5 @@
 # __🎥 Day Log #1110__
 
-## 🖋 __Mission__
-> __괄호문법 검사기__
-- [ ] 요구사항 1 : 객체 분석 정보를 출력
-- [ ] 요구사항 2 : 괄호가 매칭에 문제가 있는 경우 오류 내용을 출력
-- [ ] 요구사항 3 : 배열 분석 정보를 출력
----
 ## 📌 __CheckPoint__
 - [ ] 문자열을 반복문을 사용해서 파싱하는 방법을 안다.
 - [ ] 정규표현식이 무엇인지 안다.
@@ -17,4 +11,4 @@
 - [ ] Queue
 ---
 ## 🗂 __Record Link__
-- [Notion]()
+- [Notion](https://sprout-capybara-6f1.notion.site/MISSION-86ab9dc0d9ee41d99d835e1b4ebda92d)
