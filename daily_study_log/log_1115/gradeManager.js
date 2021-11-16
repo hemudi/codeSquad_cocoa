@@ -5,7 +5,7 @@ class GradeManager {
 
     /* 평균 */
     getMean() {
-        if (this.grades.length === 0) return '오류';  // 이 부분 예외 처리를 위해 getSum() 함수를 쪼갤까 고민
+        if (this.grades.length === 0) return '오류'; 
         return (this.grades.reduce((a, b) => a + b) / this.grades.length).toFixed(2);
     }
 
@@ -90,6 +90,7 @@ class GradeManager {
     }
 }
 
+const data = [60, 60, 60, 60, 60, 60, 60]; // 테스트 필요
 const grades = [89.23, 82.03, 71.56, 78.82, 85.05, 84.44, 67.53, 71.7, 77.97, 73.77, 84.25, 67.01, 73.78, 64.19, 89.89, 90.32, 73.21, 75.35, 83.22, 74.01];
 
 const manager = new GradeManager(grades);
