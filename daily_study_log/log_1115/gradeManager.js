@@ -3,22 +3,26 @@ class GradeManager {
         this.grades = grades;
     }
 
+    /* 평균 */
     getMean() {
-        if (this.grades.length === 0) return '오류';
-        return this.grades.reduce((a, b) => a + b) / this.grades.length;
+        if (this.grades.length === 0) return '오류';  // 이 부분 예외 처리를 위해 getSum() 함수를 쪼갤까 고민
+        return (this.grades.reduce((a, b) => a + b) / this.grades.length).toFixed(2);
     }
 
+    /* 표준편차 */
     getStandardDeviation() {
-        let mean = this.getMean().toFixed(3);
+        let mean = this.getMean();
         let result = Math.sqrt(this.grades.reduce((a, b) => a + ((b - mean) ** 2)) / this.grades.length);
-        return result.toFixed(3);
+        return result.toFixed(2);
     }
 
+    /* 정규화 점수 */
     getZScore(data) {
         let result = (data - this.getMean()) / this.getStandardDeviation();
         return result.toFixed(3);
     }
 
+    /* 표준정규분포표 */
     getZTable() {
         return {
             0: [0.0000, 0.004, 0.008, 0.012, 0.016, 0.0199, 0.0239, 0.0279, 0.0319, 0.0359],
@@ -63,10 +67,11 @@ class GradeManager {
     getPercent(value) {
         const zTable = this.getZTable();
         const zScore = this.getZScore(value);
+
         const absValue = Math.abs(zScore);
 
         let zValue = absValue.toString().slice(0, 3);
-        zValue = this.isInteger(zValue) ? zValue.slice(0, 1) : zValue;  // 1.0 하니까 왜 못찾는거지? => 나중에 다시 테스트
+        zValue = this.isInteger(zValue) ? parseInt(zValue) : zValue; // 1.0 하니까 왜 못찾는거지? => 나중에 다시 테스트
 
         let xValue = absValue.toString().slice(3, 4);
 
@@ -78,16 +83,12 @@ class GradeManager {
         return number % 1 === 0;
     }
 
-    getBetweenDistribution(start, end){
+    getBetweenDistribution(start, end) {
         const mean = this.getMean();
-        
-        if(start > end){
-            return '오류';
-        }
 
-        if(start - mean < 0 && end - mean > 0){
-            return this.getPercent(start) + this.getPercent(end);
-        }
+        if (start > end) { return '오류'; }
+
+        if (start - mean < 0 && end - mean > 0) { return this.getPercent(start) + this.getPercent(end); }
 
         return Math.abs(this.getPercent(start) - this.getPercent(end));
     }
@@ -97,7 +98,13 @@ const grades = [89.23, 82.03, 71.56, 78.82, 85.05, 84.44, 67.53, 71.7, 77.97, 73
 
 const manager = new GradeManager(grades);
 
-console.log(manager.getPercent(70));
-console.log(manager.getPercent(80));
-
-console.log(manager.getBetweenDistribution(70, 80));
+console.log('평균 : ' + manager.getMean());
+console.log('표준 편차 : ' + manager.getStandardDeviation());
+console.log('------------------------------');
+console.log('70 zScore : ' + manager.getZScore(70));
+console.log('70 정규화 비율 : ' + manager.getPercent(70));
+console.log('------------------------------');
+console.log('80 zScore : ' + manager.getZScore(80));
+console.log('80 정규화 비율 : ' + manager.getPercent(80));
+console.log('------------------------------');
+console.log('70~80 사이의 비율 : ' + manager.getBetweenDistribution(70, 80));
