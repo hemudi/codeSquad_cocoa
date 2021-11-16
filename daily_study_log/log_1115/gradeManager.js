@@ -12,7 +12,7 @@ class GradeManager {
     /* 표준편차 */
     getStandardDeviation() {
         let mean = this.getMean();
-        let result = Math.sqrt(this.grades.reduce((a, b) => a + ((b - mean) ** 2)) / this.grades.length);
+        let result = Math.sqrt(this.grades.reduce((a, b) => a + ((b - mean) ** 2), 0) / this.grades.length);
         return result.toFixed(2);
     }
 
@@ -65,17 +65,15 @@ class GradeManager {
     }
 
     getPercent(value) {
-        const zTable = this.getZTable();
         const zScore = this.getZScore(value);
-
         const absValue = Math.abs(zScore);
 
         let zValue = absValue.toString().slice(0, 3);
-        zValue = this.isInteger(zValue) ? parseInt(zValue) : zValue; // 1.0 하니까 왜 못찾는거지? => 나중에 다시 테스트
-
         let xValue = absValue.toString().slice(3, 4);
 
-        const getZTableValue = zTable[zValue][xValue];
+        zValue = this.isInteger(zValue) ? parseInt(zValue) : zValue; // 1.0 하니까 왜 못찾는거지? => 나중에 다시 테스트
+
+        const getZTableValue = this.getZTable()[zValue][xValue];
         return getZTableValue * 100;
     }
 
@@ -88,7 +86,9 @@ class GradeManager {
 
         if (start > end) { return '오류'; }
 
-        if (start - mean < 0 && end - mean > 0) { return this.getPercent(start) + this.getPercent(end); }
+        if (start - mean < 0 && end - mean > 0) {
+            return this.getPercent(start) + this.getPercent(end);
+        }
 
         return Math.abs(this.getPercent(start) - this.getPercent(end));
     }
