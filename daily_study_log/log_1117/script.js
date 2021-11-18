@@ -14,13 +14,13 @@
     * 클래스 구상
     1. TaskDataManager : Task Data 들을 저장, 관리 => localStorage 도 여기서 사용...?
     2. ListController :  Add button click 이벤트가 발생하면 TaskDataManager 와 TaskCreator 에게 입력 정보 전송
-    3. TaskEventManager : Task 의 추가 체크 삭제 이벤트들을 관리함
+    3. TaskEventManager : Task 의 추가 체크 이벤트들을 관리함
 */
 
 class ListController {
     constructor(){
         this.taskDataManager = new TaskDataManager();
-        this.taskEventManager = new TaskEventManager(this.removeButtonEventHandler);
+        this.taskEventManager = new TaskEventManager(this);
     }
 
     init(){
@@ -64,18 +64,13 @@ class ListController {
 
     addTaskContents(taskValue, dateValue){
         this.taskEventManager.addTaskElements(taskValue, dateValue);
-        this.taskDataManager.saveTaskInfo(taskValue, dateValue);  // ok
+        this.taskDataManager.saveTaskInfo(taskValue, dateValue);
     }
 
-    removeButtonEventHandler(element){
-        const $removeBtn = element.currentTarget;
-        const $taskLi = $removeBtn.parentNode;
-        const taskValue = $taskLi.querySelector('.contents').innerText;
-        $taskLi.remove();
-    }
-
-    printTestLog(){
-        console.log('테스트임당');
+    removeEventDetector(taskValue){
+        console.log('detector before : ' + this.taskDataManager.getTaskArray().length);
+        this.taskDataManager.removeTask(taskValue);
+        console.log('detector after : ' + this.taskDataManager.getTaskArray().length);
     }
 }
 
@@ -97,7 +92,7 @@ class TaskDataManager {
         let index = 0;
         const notExist = -1;
         for(const task of this.taskArray){
-            if(task[contents] === taskValue){ return index; }
+            if(task['contents'] === taskValue){ return index; }
             index++;
         }
         return notExist;
@@ -114,9 +109,9 @@ class TaskDataManager {
 
 // TaskEventHandler 가 나을까?
 class TaskEventManager {
-    constructor(removeBtnEventHandler){
+    constructor(listController){
         this.$taskList = document.querySelector('#taskList');
-        this.removeBtnEventHandler = removeBtnEventHandler;
+        this.listController = listController;
         this.count = 0;
     }
 
@@ -150,7 +145,7 @@ class TaskEventManager {
         const $removeBtn = document.createElement('button');
         $removeBtn.classList.add('removeBtn');
         $removeBtn.innerText = '×';
-        $removeBtn.addEventListener('click', (e) => {this.removeBtnEventHandler(e)});
+        $removeBtn.addEventListener('click', (e) => {this.removeButtonEventHandler(e)});
         return $removeBtn;
     }
 
@@ -165,6 +160,14 @@ class TaskEventManager {
         const childNodes = $checkBox.parentNode.childNodes;
         childNodes[1].classList.toggle('label_Checked');
         childNodes[2].classList.toggle('label_Checked');
+    }
+
+    removeButtonEventHandler(element){
+        const $removeBtn = element.currentTarget;
+        const $taskLi = $removeBtn.parentNode;
+        const taskValue = $taskLi.querySelector('.contents').innerText;
+        $taskLi.remove();
+        listController.removeEventDetector(taskValue);
     }
 }
 
