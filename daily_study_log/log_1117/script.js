@@ -3,9 +3,9 @@
     [X] 할 일 리스트에 추가하기
         - + 버튼 클릭시 아래 리스트에 할일 추가
         - 날짜나 할일 입력하지 않고 ADD 누르면 경고 메세지 출력
-    [ ] 체크박스 클릭 시 비활성화
-        - 글자에 빨간줄
-        - 배경 색 바꾸기
+    [X] 체크박스 클릭 시 비활성화
+        - 글자에 가운데 줄
+        - 글자 색 바꾸기
     [X] 할일 삭제
         - 삭제 버튼 클릭시 리스트에서 삭제
 
@@ -24,10 +24,10 @@ class ListController {
     init(){
         this.setButtonEvent();
         this.setStoredData();
-        this.setWindowKeyEvent();
+        this.setWindowEnterKeyEvent();
     }
 
-    setWindowKeyEvent(){
+    setWindowEnterKeyEvent(){
         window.addEventListener('keydown', (e) => {
             if(e.key === 'Enter'){
                 this.addButtonEventHandler();
@@ -40,7 +40,7 @@ class ListController {
         if(storedData.length === 0) return;
 
         for(const data of storedData){
-            this.taskEventManager.addTaskElements(data['contents'], data['date']);
+            this.taskEventManager.addTaskElements(data['contents'], data['date'], data['checked']);
         }
     }
 
@@ -87,6 +87,10 @@ class ListController {
     removeEventDetector(taskValue){
         this.taskDataManager.removeTask(taskValue);
     }
+
+    checkEventDetector(taskValue){
+        this.taskDataManager.setCheckedTask(taskValue);
+    }
 }
 
 class TaskDataManager {
@@ -103,11 +107,10 @@ class TaskDataManager {
 
     setLocalStorage(){
         localStorage.setItem(this.storageKey, JSON.stringify(this.taskArray));
-        console.log('setLocalStorage -> ' + localStorage.getItem(this.storageKey));
     }
 
     saveTaskInfo(taskValue, dateValue){
-        this.taskArray.push({contents : taskValue, date : dateValue});
+        this.taskArray.push({contents : taskValue, date : dateValue, checked : false});
         this.setLocalStorage();
     }
 
@@ -127,6 +130,14 @@ class TaskDataManager {
         return notExist;
     }
 
+    setCheckedTask(taskValue){
+        const index = this.getTaskIndex(taskValue);
+        if(index >= 0) {
+            this.taskArray[index]['checked'] = !this.taskArray[index]['checked'];
+            this.setLocalStorage();
+        }
+    }
+
     getTaskArray(){
         return this.taskArray;
     }
@@ -137,7 +148,6 @@ class TaskDataManager {
     }
 }
 
-// TaskEventHandler 가 나을까?
 class TaskEventManager {
     constructor(listController){
         this.$taskList = document.querySelector('#taskList');
@@ -145,7 +155,7 @@ class TaskEventManager {
         this.count = 0;
     }
 
-    addTaskElements(taskValue, dateValue){
+    addTaskElements(taskValue, dateValue, checked = false){
         const $checkBox = this.createCheckBox();
         const $removeBtn = this.createRemoveButton();
         const $dateLabel = this.createLabel('date', dateValue);
@@ -153,13 +163,18 @@ class TaskEventManager {
         const $taskLi = this.createLi($checkBox, $taskLabel, $dateLabel, $removeBtn);
         document.querySelector('#taskList').appendChild($taskLi);
         this.count++;
+
+        if(checked) {
+            $checkBox.checked = checked;
+            this.labelClassToggler($taskLabel, $dateLabel)
+        };
     }
 
     createCheckBox(){
         const $checkBox = document.createElement('input');
         $checkBox.type = 'checkbox';
         $checkBox.id = 'checkbox_' + this.count;
-        $checkBox.addEventListener('click', (e) => {this.checkBoxClickEventHandler(e)})
+        $checkBox.addEventListener('click', (e) => {this.checkBoxEventHandler(e)})
         return $checkBox;
     }
 
@@ -185,11 +200,16 @@ class TaskEventManager {
         return $taskLi;
     }
 
-    checkBoxClickEventHandler(e){
+    checkBoxEventHandler(e){
         const $checkBox = e.currentTarget;
         const childNodes = $checkBox.parentNode.childNodes;
-        childNodes[1].classList.toggle('label_Checked');
-        childNodes[2].classList.toggle('label_Checked');
+        this.labelClassToggler(childNodes[1], childNodes[2]);
+        listController.checkEventDetector(childNodes[1].innerText);
+    }
+
+    labelClassToggler(taskLabel, dateLabel){
+        taskLabel.classList.toggle('label_Checked');
+        dateLabel.classList.toggle('label_Checked');
     }
 
     removeButtonEventHandler(element){
