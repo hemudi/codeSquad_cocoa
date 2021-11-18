@@ -1,20 +1,18 @@
-// 아직 구현 못하고 설계 중입니다...
-
 /*
     * TODO List 만들기
-    [ ] 할 일 리스트에 추가하기
+    [X] 할 일 리스트에 추가하기
         - + 버튼 클릭시 아래 리스트에 할일 추가
         - 날짜나 할일 입력하지 않고 ADD 누르면 경고 메세지 출력
     [ ] 체크박스 클릭 시 비활성화
         - 글자에 빨간줄
         - 배경 색 바꾸기
-    [ ] 할일 삭제
+    [X] 할일 삭제
         - 삭제 버튼 클릭시 리스트에서 삭제
 
     * 클래스 구상
-    1. TaskDataManager : Task Data 들을 저장, 관리 => localStorage 도 여기서 사용...?
-    2. ListController :  Add button click 이벤트가 발생하면 TaskDataManager 와 TaskCreator 에게 입력 정보 전송
-    3. TaskEventManager : Task 의 추가 체크 삭제 이벤트들을 관리함
+    1. TaskDataManager : Task Data 들을 관리, localStorage 제어
+    2. ListController :  TaskDataManager 와 TaskEventManager 를 제어, List 의 전반적인 제어
+    3. TaskEventManager : 하나의 Task 의 추가 체크 삭제 이벤트들을 관리함
 */
 
 class ListController {
@@ -26,6 +24,15 @@ class ListController {
     init(){
         this.setButtonEvent();
         this.setStoredData();
+        this.setWindowKeyEvent();
+    }
+
+    setWindowKeyEvent(){
+        window.addEventListener('keydown', (e) => {
+            if(e.key === 'Enter'){
+                this.addButtonEventHandler();
+            }
+        }, true);
     }
 
     setStoredData(){
@@ -49,7 +56,7 @@ class ListController {
         const dateValue = $inputDate.value;
 
         if(this.isFormEmpty(taskValue, dateValue)) return;
-        // this.resetInput($inputTask, $inputDate);
+        this.resetInput($inputTask, $inputDate);
         this.addTaskContents(taskValue, dateValue);
     }
 
