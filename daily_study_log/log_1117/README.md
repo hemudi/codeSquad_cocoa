@@ -1,6 +1,8 @@
 # __🎥 Day Log #1117__
 
-![todoList](ToDoList_211119.png)
+<p align="center">
+    <img src="./ToDoList_211119.png">
+</p>
 
 ## 📌 __CheckPoint__
 - [X] JavaScript와 DOM과의 상호작용을 경험
