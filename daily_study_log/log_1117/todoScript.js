@@ -12,10 +12,11 @@
     * 클래스 구상
     1. TaskDataManager : Task Data 를 Array 로 저장
     2. ListController : TODO 리스트의 이벤트를 제어
-    3. TaskCreator : Task li 를 생성...?
+    3. TaskCreator : Task li 생성...? => 굳이? 싶은가?
 */
 
 // 할일 데이터 관리
+// localStorage 를 여기서...?
 class TaskDataManager {
     constructor(){
         this.taskArray = [];
@@ -49,6 +50,7 @@ class TaskDataManager {
     }
 }
 
+// 이벤트 관리
 class ListController {
     constructor(taskDataManager, taskCreator){
         this.taskDataManager = taskDataManager;
@@ -97,7 +99,17 @@ class ListController {
 
     addTake(taskValue, dateValue){
         this.taskDataManager.addTake(taskValue, dateValue);
+        const $taskLi = this.taskCreator.createTaskLi(taskValue, dateValue);
+        // 생성한 taskLi 를 ul 에 붙이기 => appendChile()? 사용하나?
 
+        /* 문제 */
+        // taskCreator 에서 element 를 만들면 거기서 체크박스랑 버튼 event 도 붙여야함
+        // 그러면 ListController 에서 event 함수를 만들어서 taskCreator 한테 전달해서 붙이게?
+        /*
+            taskCreator.setEvent(checkBoxClickEvent, deleteButtonClickEvent);
+        */
+        // 그럼 이렇게 하면 taskCreator 에서 생성하려는 element를 constructor 에서 만들어놔야하나?
+        // createTaskLi 랑 setEvent 에서 다 접근할 수 있게...?
     }
 
     removeTask(taskValue){
@@ -109,8 +121,23 @@ class ListController {
     }
 }
 
+// Task Element 생성
 class TaskCreator{
     constructor() {
-        
+    }
+
+    // 함수 쪼개야하나?
+    createTaskLi(taskValue, dateValue){
+        /* 1. 생성한 Element 들 설정하고 */
+        const $checkBox = document.createElement('input');
+        const $contents = document.createElement('label');
+        const $dueDate = document.createElement('label');
+        const $removeBtn = document.createElement('button');
+
+        /* 2. li 만들어서 생성한 Element 들 붙이고 */
+        const $taskLi = document.createElement('li');
+        $taskLi.append()
+
+        /* 3. li 반환? */
     }
 }
