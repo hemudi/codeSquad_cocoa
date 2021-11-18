@@ -14,17 +14,27 @@
     * 클래스 구상
     1. TaskDataManager : Task Data 들을 저장, 관리 => localStorage 도 여기서 사용...?
     2. ListController :  Add button click 이벤트가 발생하면 TaskDataManager 와 TaskCreator 에게 입력 정보 전송
-    3. TaskEventManager : Task 의 추가 체크 이벤트들을 관리함
+    3. TaskEventManager : Task 의 추가 체크 삭제 이벤트들을 관리함
 */
 
 class ListController {
     constructor(){
-        this.taskDataManager = new TaskDataManager();
+        this.taskDataManager = new TaskDataManager('TaskList');
         this.taskEventManager = new TaskEventManager(this);
     }
 
     init(){
         this.setButtonEvent();
+        this.setStoredData();
+    }
+
+    setStoredData(){
+        const storedData = this.taskDataManager.getStoredData();
+        if(storedData.length === 0) return;
+
+        for(const data of storedData){
+            this.taskEventManager.addTaskElements(data['contents'], data['date']);
+        }
     }
 
     setButtonEvent(){
@@ -68,24 +78,36 @@ class ListController {
     }
 
     removeEventDetector(taskValue){
-        console.log('detector before : ' + this.taskDataManager.getTaskArray().length);
         this.taskDataManager.removeTask(taskValue);
-        console.log('detector after : ' + this.taskDataManager.getTaskArray().length);
     }
 }
 
 class TaskDataManager {
-    constructor(){
+    constructor(storageKey){
         this.taskArray = [];
+        this.storageKey = storageKey;
+    }
+
+    getStoredData(){
+        const taskData = localStorage.getItem(this.storageKey);
+        this.taskArray = (taskData !== null ? JSON.parse(taskData) : new Array());
+        return this.taskArray;
+    }
+
+    setLocalStorage(){
+        localStorage.setItem(this.storageKey, JSON.stringify(this.taskArray));
+        console.log('setLocalStorage -> ' + localStorage.getItem(this.storageKey));
     }
 
     saveTaskInfo(taskValue, dateValue){
         this.taskArray.push({contents : taskValue, date : dateValue});
+        this.setLocalStorage();
     }
 
     removeTask(taskValue){
         const index = this.getTaskIndex(taskValue);
         if(index >= 0) this.taskArray.splice(index, 1);
+        this.setLocalStorage();
     }
 
     getTaskIndex(taskValue){
@@ -104,6 +126,7 @@ class TaskDataManager {
 
     clearTaskArray(){
         this.taskArray = [];
+        localStorage.clear();
     }
 }
 
