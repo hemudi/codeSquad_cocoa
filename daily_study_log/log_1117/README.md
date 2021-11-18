@@ -1,5 +1,7 @@
 # __🎥 Day Log #1117__
 
+![todoList](ToDoList_211119.png)
+
 ## 📌 __CheckPoint__
 - [X] JavaScript와 DOM과의 상호작용을 경험
 - [X] DOM 노드를 탐색하고, 추가하는 API
