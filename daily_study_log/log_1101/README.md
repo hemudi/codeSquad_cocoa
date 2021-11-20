@@ -1,13 +1,5 @@
 # __🎥 Day Log #1101__
 
-## 🖋 __Mission__
-> 다각형의 넓이 구하기
-- [X] getArea() 구현
-- [X] printExecutionSequence 구현
-- [X] printExecutionSequence with result 구현
-- [소스 코드](getAreaProject.js)
-  
----
 ## 📌 __CheckPoint__
 - [X] Node.js를 통해 JavaScript 개발을 할 수 있다.
 - [X] 함수의 역할은 한가지에 집중하고 있다(▲).
