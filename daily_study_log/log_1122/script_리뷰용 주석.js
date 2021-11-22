@@ -17,7 +17,7 @@
 /* === Model === */
 class DataManager {
     constructor(storageKey) {
-        this.tempStorage = []; // 임시 데이터 저장소 => 직접 데이터에 접근하는건 위험하고, 무결성 체크가 필요하겠다 싶어서 임시 데이터를 거치게 설계...했지만 체크 기능 구현 안함ㅎㅎ
+        this.tempStorage = []; // 임시 데이터 저장소 
         this.storageKey = storageKey; // localStorage Key 를 생성자로 받아서 1 Model = 1 LocalStorage 라는 느낌으로 구현
     }
 
