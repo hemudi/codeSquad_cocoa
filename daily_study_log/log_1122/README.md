@@ -13,3 +13,4 @@
 ---
 ## 🗂 __Record Link__
 - [Notion]()
+- [CodePen 에서 실행해보기](https://codepen.io/hemudi/pen/VwzgVbj)
