@@ -12,5 +12,5 @@
 - [ ] 향상된 OOP 
 ---
 ## 🗂 __Record Link__
-- [Notion]()
+- [Notion : [MISSION] 웹 TODO](https://sprout-capybara-6f1.notion.site/MISSION-TODO-750ab249721c42cba48216c06ab2acb4)
 - [CodePen 에서 실행해보기](https://codepen.io/hemudi/pen/VwzgVbj)
