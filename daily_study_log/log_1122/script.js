@@ -6,19 +6,6 @@
     [ ] 날짜 별 TODO 보기 기능 구현
 */
 
-/*
-    [ Class ]
-    1. DataManager : Model
-    2. ViewManager : View
-    3. Controller : Controller
-    4. TaskLiElement : 하나의 일정 Li 객체 
-
-    [추가 이벤트 과정]
-    1. 새로운 일정이 입력되면 Controller 가 해당 정보를 TaskLiElement 객체로 만들어서 View 에게 넘겨줌
-    2. View 가 그걸 화면에 그림
-
-*/
-
 class DataManager {
     constructor(storageKey){
         this.tempStorage = [];
