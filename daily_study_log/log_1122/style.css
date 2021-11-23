@@ -82,7 +82,7 @@ label{
 
 .label_Checked {
     text-decoration-line: line-through;
-    text-decoration-color: rgb(255, 0, 76);
+    text-decoration-color: #ffffff;
     text-decoration-style: wavy;
     color: rgba(0, 0, 0, 0.623);
 }
