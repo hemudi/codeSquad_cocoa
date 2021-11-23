@@ -1,0 +1,7 @@
+{
+  "name": "TodoList",
+  "type": "module",
+  "description": "",
+  "main": "./js/main.js",
+  "author": "Hemudi"
+}
