@@ -1,5 +1,9 @@
 # __🎥 Day Log #1122__
 
+<p align="center">
+    <img src="./ToDoList_211119.png">
+</p>
+
 ## 📌 __CheckPoint__
 - [ ] 자바스크립트 객체 생성 방법
 - [ ] OOP는 무엇인지
