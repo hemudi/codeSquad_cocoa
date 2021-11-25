@@ -18,40 +18,37 @@
 const ENTER_DELAY = 1000;
 const MOVE_DELAY = 500;
 
-// 그냥 전역으로 생성하는게 나을까? 아니면 이렇게...함수로...
-function getMenuItems(){
-    return document.querySelector('.menu-item');
+function getMenu() {
+    return document.querySelector('.menu');
 }
 
-function setMenuItemEvent(){
-    let menuItem = getMenuItems();
+function setMenuItemEvent() {
+    let $menuItem = getMenu();
     let enterTimer = null;
     let leaveTimer = null;
 
-    // 리스트에 마우스 올릴때
-    menuItem.addEventListener('mouseenter', function(){
-        if(leaveTimer !== null)
-            clearTimeout(leaveTimer);
+    $menuItem.addEventListener('mouseenter', function () {
+        if (leaveTimer !== null) {
+            clearTimeout(leaveTimer)
+        };
 
-        enterTimer = setTimeout(function() {
-            menuItem.classList.add('active');
+        enterTimer = setTimeout(function () {
+            $menuItem.classList.add('active');
             // 여기서 하위 요소들에게 mousemove 이벤트 달아줘야?...하나?
         }, ENTER_DELAY);
     });
 
-    // 리스트에서 마우스 뗄때
-    menuItem.addEventListener('mouseleave', function () {
-        if(enterTimer !== null) 
+    $menuItem.addEventListener('mouseleave', function () {
+        if (enterTimer !== null) {
             clearTimeout(enterTimer);
 
-        leaveTimer = setTimeout(function() {
-            menuItem.classList.remove('active');
-        }, ENTER_DELAY);
-        
-    })
+            leaveTimer = setTimeout(function () {
+                $menuItem.classList.remove('active');
+            }, ENTER_DELAY);
+
+        }
+    });
 }
 
-
-
-
-
+/*----실행부분----*/
+setMenuItemEvent();
