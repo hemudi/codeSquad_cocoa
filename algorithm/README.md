@@ -40,7 +40,7 @@
 |[Reverse Integer](https://leetcode.com/problems/reverse-integer/)|[코드](week_4/leetcode_reverse_integer.js)|✅|
 |[Palindrome Number](https://leetcode.com/problems/palindrome-number/)|[코드](week_4/leetcode_palindrome_number.js)|✅|
 |[Roman To Integer](https://leetcode.com/problems/roman-to-integer/)|[코드](week_4/leetcode_roman_to_integer.js)|✅|
-|[Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/)|[코드](week_4/leetcode_roman_to_integer.js)|✅|
+|[Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/)|[코드](week_4/leetcode_longest_common_prefix)|✅|
 |[Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)|[코드1](week_4/leetcode_merge_sorted_lists.js) [코드2](week_4/leetcode_merge_sorted_lists_recursive.js)|✅|
 
 
