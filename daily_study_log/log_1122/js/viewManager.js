@@ -31,7 +31,6 @@ export default class ViewManager {
         return $label;
     }
 
-    // need test
     toggleLabelClass(labels){
         for(const label of labels){ label.classList.toggle('label_Checked'); }
     }

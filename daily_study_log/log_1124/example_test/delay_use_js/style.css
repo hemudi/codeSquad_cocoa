@@ -1,14 +1,14 @@
-.drop_down {
+.menu {
     display: flex;
     max-width: 800px;
     list-style: none;
     margin: 1rem auto;
     padding: 0;
     height: 36px;
-    background:#ccc;
+    background: #ccc;
 }
 
-.menu {
+.menu-item {
     flex-grow: 1;
     position: relative;
     padding: 10px;
@@ -31,7 +31,7 @@
     padding: 10px;
 }
 
-.menu.active > .submenu {
+.menu-item.active > .submenu {
     display: block;
 }
 

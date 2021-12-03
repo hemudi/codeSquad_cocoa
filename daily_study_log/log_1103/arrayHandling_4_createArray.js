@@ -31,14 +31,14 @@ const data = {
     "debug2" : "string"
 }
 
-function travelObject(object){
+function travelObject(object, result){
     let keysOfNumValue = [];
 
     for(let key in object){
         let value = object[key];
 
-        if(typeof(value) === 'number'){
-            keysOfNumValue.push(key);
+        if(typeof(value) === 'number'){                     // 값이 숫자면 넣고 객체면 다시 순회
+            keysOfNumValue.push(key);   
         }
         else if(typeof(value) == 'object'){
             keysOfNumValue.push(travelObject(value));
@@ -48,3 +48,5 @@ function travelObject(object){
 }
 
 console.log(travelObject(data));
+
+// 
