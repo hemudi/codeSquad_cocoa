@@ -18,5 +18,10 @@ const myReduce = (arr, callback, initialValue) => {
 }
 
 const reducer = (pre, cur) => { return pre + cur; }
-const result = myReduce([2,3,4], reducer);
-console.log(result);
+const arrayReducer = (acc, cur) => {
+    acc.push(cur % 2 ? '홀수' : '짝수');
+    return acc;
+}
+
+console.log(myReduce([1,2,3], reducer));
+console.log(myReduce([1,2,3], arrayReducer, []));
