@@ -42,10 +42,14 @@ function getCircleArea(params){
     const radius = params[0];
     const maxRadius = params[1] || radius;
     const calculate = (r, max) => { 
-        if(max === r) return r * r * Math.PI;
-        return (r * r * Math.PI) + calculate(r + 1, max);
+        if(max === r) return calcCircleArea(r);
+        return calcCircleArea(r) + calculate(r + 1, max);
     }
     return calculate(radius, maxRadius).toFixed(2);
+}
+
+function calcCircleArea(radius){
+    return radius*radius*Math.PI;
 }
 
 function getRectArea(params) {
