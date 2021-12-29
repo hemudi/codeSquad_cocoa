@@ -7,14 +7,14 @@
 ## __✅다각형의 넓이 구하기__ : [이전 풀이(1101)](log_1101/../../daily_study_log/log_1101/getAreaProject.js) ➞ [새로운 풀이(1228)](1101_getArea.js)
 ### 1. 가변 인자를 대응하기 위해 arguments 를 사용했던 이전과 달리 rest parameter 를 사용해 구현했다.
 ```js
-// 이전 풀이
+/* 이전 풀이 */
 function getArea(){
     const inputArguments = Array.from(arguments);
     ...
     const shape = inputArguments[0];
     const values = inputArguments.slice(1);
 }
-// 새로운 풀이
+/* 새로운 풀이 */
 function getArea(shape, ...params) {
     ...
     const result = getAreaOf(shape, params);
@@ -26,13 +26,13 @@ function getArea(shape, ...params) {
 
 ### 2. 유효한 값을 체크하기 위해 4개의 함수를 사용했던 이전과 달리 2개의 함수로 줄였다.
 ```js
-// 이전 풀이
+/* 이전 풀이 */
 function isValidArguments(arg){} // -> call isValidShape(), isValidSize()
 function isValidShape(shape, argCount){}
 function isValidSize(shape, sizeArray){} // -> call isValidRadiusOfCircle()
 function isValidRadiusOfCircle(radiusArray){}
 
-// 새로운 풀이
+/* 새로운 풀이 */
 function isInValidParams(shape, params) {
     const count = params.length;
     const shapeArgCount = {
@@ -62,7 +62,7 @@ function checkParamsValue(params) {
 
 ### 3. 배열 디스트럭처링을 사용해봄.
 ```js
-// 이전 풀이
+/* 이전 풀이 */
 var getResult = {
     circle : function(){ return getCircleArea(values) },
     rect : function(){ return getRectArea(values[0], values[1])},
@@ -72,7 +72,7 @@ function calcCircleArea(radius){}
 function getRectArea(width, height){}
 function getTrapezoidArea(top, bottom, height){}
 
-// 새로운 풀이
+/* 새로운 풀이 */
 const calcArea = {
     circle : () => getCircleArea(params),
     rect : () => getRectArea(params),
@@ -105,7 +105,7 @@ function getTrapArea([top, bottom, height]){
 
 ### 4. 기존에는 do while 문으로 구현했던 원의 넓이 구하는 기능을 재귀 방식으로 구현해봤다.
 ```js
-// 이전 풀이
+/* 이전 풀이 */
 function getCircleArea(radiusInfo){
     var result = 0;
     var radius = radiusInfo[0];
@@ -123,7 +123,7 @@ function getMaxRadius(radiusArray){
     return radiusArray[1];
 }
 
-// 새로운 풀이
+/* 새로운 풀이 */
 function getCircleArea(params){
     const radius = params[0];
     const maxRadius = params[1] || radius;
@@ -150,7 +150,7 @@ import data from './data/exampleData.js';
 
 ### 2. 재귀 방식을 수정함.
 ```js
-// 이전 풀이
+/* 이전 풀이 */
 function travelObject(object){
     let keysOfNumValue = [];
 
@@ -167,7 +167,7 @@ function travelObject(object){
     return keysOfNumValue;
 }
 
-// 새로운 풀이
+/* 새로운 풀이 */
 function getNumTypeValues(data) {
     const result = [];
     const search = (key, value) => {
