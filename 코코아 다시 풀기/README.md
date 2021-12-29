@@ -140,7 +140,7 @@ function getCircleArea(params){
 ---
 
 ## __✏️ WEEK 1 - 2__
-## __✅ 배열 만들기__ : [이전풀이(1103)](log_1103/../../daily_study_log/log_1103/arrayHandling_4_createArray.js) ➞ [새로운풀이(1103)](1103_createArray.js)
+## __✅ 배열 만들기__ : [이전풀이(1103)](log_1103/../../daily_study_log/log_1103/arrayHandling_4_createArray.js) ➞ [새로운풀이(1228)](1103_createArray.js)
 
 ### 1. 예시 데이터를 별도 파일로 분리해서 module 방식으로 불러와 사용함
 ```js
@@ -190,7 +190,7 @@ function getNumTypeValues(data) {
 
 </br>
 
-## __✅ 배열 결과 출력__ : [이전풀이(1103)](log_1103/../../daily_study_log/log_1103/arrayHandling_5_printArray.js) ➞ [새로운풀이(1103)](1103_printArray.js)
+## __✅ 배열 결과 출력__ : [이전풀이(1103)](log_1103/../../daily_study_log/log_1103/arrayHandling_5_printArray.js) ➞ [새로운풀이(1228)](1103_printArray.js)
 ### 1. 위와 같이 예시 데이터를 별도 파일로 분리
 ```js
 export default [{}]
@@ -219,6 +219,6 @@ function getNamesOfSk(data) {
 
 </br>
 
-## __✅ reduce 만들기__ : [이전풀이(1103)](../daily_study_log/log_1103/arrayHandling_6_reduce.js) ➞ [새로운풀이(1103)](1103_myReduce.js)
+## __✅ reduce 만들기__ : [이전풀이(1103)](../daily_study_log/log_1103/arrayHandling_6_reduce.js) ➞ [새로운풀이(1228)](1103_myReduce.js)
 #### 이전에는 reduce 함수에대해 이해가 부족해 시도도 제대로 못했었는데 다시 도전을 해보니 생각보다 쉽게 구현했다!
 #### 초기값이 배열인 경우를 따로 처리를 해줘야 하나 싶었는데 삼항 연산자에서 걸러지지 않고 그대로 빈 배열로 초기화 되는걸 보고 안심했다!
